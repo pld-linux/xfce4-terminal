@@ -19,6 +19,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
+BuildRequires:	libxfce4ui-devel >= %{xfce_version}
 BuildRequires:	ncurses-devel
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
