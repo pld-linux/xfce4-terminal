@@ -1,0 +1,86 @@
+--- xfce4-terminal-0.6.1/terminal/terminal-preferences-dialog.c~	2013-01-17 12:02:00.584298133 +0100
++++ xfce4-terminal-0.6.1/terminal/terminal-preferences-dialog.c	2013-01-17 12:06:11.493576768 +0100
+@@ -670,7 +670,7 @@
+ static void
+ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
+ {
+-  gchar       **presets;
++  gchar       **sys_presets,**user_presets;
+   guint         n;
+   GObject      *object;
+   guint         n_presets = 0;
+@@ -682,8 +682,9 @@
+   gchar        *path;
+ 
+   /* load schemes */
+-  presets = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
+-  if (G_LIKELY (presets != NULL))
++  sys_presets = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
++  user_presets = xfce_resource_match (XFCE_RESOURCE_CONFIG, "xfce4/terminal/colorschemes/*.theme", TRUE);
++  if (G_LIKELY (sys_presets != NULL) || (user_presets != NULL))
+     {
+       /* create sorting store */
+       store = gtk_list_store_new (N_PRESET_COLUMNS, G_TYPE_STRING,
+@@ -693,10 +693,11 @@
+                                             GTK_SORT_ASCENDING);
+ 
+       /* append files */
+-      for (n = 0; presets[n] != NULL; n++)
++      if (G_LIKELY (sys_presets != NULL)) {
++      for (n = 0; sys_presets[n] != NULL; n++)
+         {
+           /* open the scheme */
+-          path = xfce_resource_lookup (XFCE_RESOURCE_DATA, presets[n]);
++          path = xfce_resource_lookup (XFCE_RESOURCE_DATA, sys_presets[n]);
+           if (G_UNLIKELY (path == NULL))
+             continue;
+ 
+@@ -722,6 +723,38 @@
+           xfce_rc_close (rc);
+           g_free (path);
+         }
++      }
++      if (user_presets != NULL) {
++      for (n = 0; user_presets[n] != NULL; n++)
++        {
++          /* open the scheme */
++          path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, user_presets[n]);
++          if (G_UNLIKELY (path == NULL))
++            continue;
++
++          rc = xfce_rc_simple_open (path, TRUE);
++          if (G_UNLIKELY (rc == NULL))
++            {
++              g_free (path);
++              continue;
++            }
++
++          xfce_rc_set_group (rc, "Scheme");
++
++          /* translated name */
++          title = xfce_rc_read_entry (rc, "Name", NULL);
++          if (G_LIKELY (title != NULL))
++            {
++              gtk_list_store_insert_with_values (store, NULL, n_presets++,
++                                                 PRESET_COLUMN_TITLE, title,
++                                                 PRESET_COLUMN_PATH, path,
++                                                 -1);
++            }
++
++          xfce_rc_close (rc);
++          g_free (path);
++        }
++      }
+ 
+       /* stop sorting */
+       gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+@@ -748,7 +781,8 @@
+       g_object_unref (store);
+     }
+ 
+-  g_strfreev (presets);
++  g_strfreev (sys_presets);
++  g_strfreev (user_presets);
+ 
+   if (n_presets == 0)
+     {
