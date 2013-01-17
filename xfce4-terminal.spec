@@ -29,7 +29,7 @@ BuildRequires:	vte0-devel >= 0.28.0
 BuildRequires:	xfce4-dev-tools >= 4.6.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
-Obsoletes:	Terminal
+Obsoletes:	Terminal < 0.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +45,7 @@ Zaawansowany emulator terminala dla systemu X Window.
 
 # already present as ur
 %{__sed} -i 's,ur_PK ,,' configure.ac
- 
+
 %build
 %{__intltoolize}
 %{__libtoolize}
@@ -59,7 +59,6 @@ Zaawansowany emulator terminala dla systemu X Window.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
