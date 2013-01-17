@@ -1,7 +1,7 @@
 
 %define		xfce_version	4.10.0
-Summary:	X Terminal Emulator
-Summary(pl.UTF-8):	Emulator terminala dla X
+Summary:	Xfce Terminal Emulator
+Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
 Version:	0.6.1
 Release:	0.1
@@ -14,7 +14,6 @@ URL:		http://www.xfce.org/projects/terminal/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
-BuildRequires:	exo-devel >= 0.3.101
 BuildRequires:	gettext-devel
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	intltool >= 0.35.0
@@ -24,11 +23,11 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	vte0-devel >= 0.17.1
+BuildRequires:	vte0-devel >= 0.28.0
 BuildRequires:	xfce4-dev-tools >= 4.6.0
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
-Obsoletes:	xfce4-terminal
+Obsoletes:	Terminal
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,43 +66,18 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%update_icon_cache hicolor
-
-%postun
-%update_icon_cache hicolor
-
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog HACKING NEWS README THANKS
-%attr(755,root,root) %{_bindir}/Terminal
-%attr(755,root,root) %{_bindir}/terminal
-%{_datadir}/%{name}
+%attr(755,root,root) %{_bindir}/xfce4-terminal
+%{_datadir}/xfce4/terminal
 %{_desktopdir}/%{name}.desktop
-%{_iconsdir}/hicolor/*/apps/%{name}*
-%{_iconsdir}/hicolor/*/stock/navigation/*.png
-%{_pixmapsdir}/*.xpm
 
-%dir %{_docdir}/%{name}
-%{_docdir}/%{name}/C
-%{_docdir}/%{name}/*.css
-%lang(ca) %{_docdir}/%{name}/ca
-%lang(da) %{_docdir}/%{name}/da
-%lang(el) %{_docdir}/%{name}/el
-%lang(es) %{_docdir}/%{name}/es
-%lang(fr) %{_docdir}/%{name}/fr
-%lang(gl) %{_docdir}/%{name}/gl
-%lang(id) %{_docdir}/%{name}/id
-%lang(it) %{_docdir}/%{name}/it
-%lang(ja) %{_docdir}/%{name}/ja
-%lang(pt) %{_docdir}/%{name}/pt
-%lang(ru) %{_docdir}/%{name}/ru
-%lang(sv) %{_docdir}/%{name}/sv
-%lang(ug) %{_docdir}/%{name}/ug
-%lang(zh_CN) %{_docdir}/%{name}/zh_CN
 %{_mandir}/man1/%{name}*
+%lang(ar) %{_mandir}/ar/man1/%{name}*
 %lang(ca) %{_mandir}/ca/man1/%{name}*
 %lang(da) %{_mandir}/da/man1/%{name}*
+%lang(de) %{_mandir}/de/man1/%{name}*
 %lang(el) %{_mandir}/el/man1/%{name}*
 %lang(es) %{_mandir}/es/man1/%{name}*
 %lang(fr) %{_mandir}/fr/man1/%{name}*
@@ -111,8 +85,14 @@ rm -rf $RPM_BUILD_ROOT
 %lang(id) %{_mandir}/id/man1/%{name}*
 %lang(it) %{_mandir}/it/man1/%{name}*
 %lang(ja) %{_mandir}/ja/man1/%{name}*
+%lang(ko) %{_mandir}/ko/man1/%{name}*
+%lang(lt) %{_mandir}/lt/man1/%{name}*
+%lang(pl) %{_mandir}/pl/man1/%{name}*
 %lang(pt) %{_mandir}/pt/man1/%{name}*
+%lang(pt_BR) %{_mandir}/pt_BR/man1/%{name}*
 %lang(ru) %{_mandir}/ru/man1/%{name}*
 %lang(sv) %{_mandir}/sv/man1/%{name}*
+%lang(tr) %{_mandir}/tr/man1/%{name}*
 #%lang(ug) %{_mandir}/ug/man1/%{name}*
+%lang(uk) %{_mandir}/uk/man1/%{name}*
 %lang(zh_CN) %{_mandir}/zh_CN/man1/%{name}*
