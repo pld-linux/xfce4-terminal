@@ -4,7 +4,7 @@ Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
 Version:	0.6.1
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.6/%{name}-%{version}.tar.bz2
@@ -62,6 +62,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
+
 %find_lang %{name}
 
 %clean
@@ -71,6 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog HACKING NEWS README THANKS
 %attr(755,root,root) %{_bindir}/xfce4-terminal
+%attr(755,root,root) %{_bindir}/Terminal
 %{_datadir}/xfce4/terminal
 %{_desktopdir}/%{name}.desktop
 
