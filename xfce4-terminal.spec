@@ -1,14 +1,13 @@
-
 %define		xfce_version	4.10.0
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	0.6.1
-Release:	3
+Version:	0.6.2
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	98613ce500fef2ed62cdbe788084acca
+# Source0-md5:	d5cdb302bd770c9f2d30262c26639006
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-user-colors.patch
 URL:		http://www.xfce.org/projects/terminal/
@@ -53,8 +52,8 @@ Zaawansowany emulator terminala dla systemu X Window.
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-%configure
-
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -63,6 +62,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
+
+%{__rm} -r $RPM_BUILD_ROOT%{_mandir}/ug
 
 %find_lang %{name}
 
@@ -95,8 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 %lang(pt) %{_mandir}/pt/man1/%{name}*
 %lang(pt_BR) %{_mandir}/pt_BR/man1/%{name}*
 %lang(ru) %{_mandir}/ru/man1/%{name}*
+%lang(sr) %{_mandir}/sr/man1/%{name}.1*
 %lang(sv) %{_mandir}/sv/man1/%{name}*
 %lang(tr) %{_mandir}/tr/man1/%{name}*
-#%lang(ug) %{_mandir}/ug/man1/%{name}*
 %lang(uk) %{_mandir}/uk/man1/%{name}*
 %lang(zh_CN) %{_mandir}/zh_CN/man1/%{name}*
