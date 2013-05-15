@@ -1,0 +1,18 @@
+similar patches:
+- konsole: http://git.pld-linux.org/?p=packages/kdebase.git;a=blob;f=kdebase-konsole-wordseps.patch
+- Terminal: http://git.pld-linux.org/?p=packages/Terminal.git;a=blob;f=wordseps.patch
+- Gnome-terminal: http://git.pld-linux.org/?p=packages/gnome-terminal.git;a=blob;f=wordseps.patch
+- mate-terminal: http://git.pld-linux.org/?p=packages/mate-terminal.git;a=blob;f=wordseps.patch
+- lxterminal: http://git.pld-linux.org/?p=packages/lxterminal.git;a=blob;f=wordseps.patch
+
+--- xfce4-terminal-0.6.2/terminal/terminal-preferences.c~	2013-05-05 21:59:59.000000000 +0300
++++ xfce4-terminal-0.6.2/terminal/terminal-preferences.c	2013-05-15 23:04:40.569264334 +0300
+@@ -907,7 +907,7 @@
+       g_param_spec_string ("word-chars",
+                            NULL,
+                            "WordChars",
+-                           "-A-Za-z0-9,./?%&#:_=+@~",
++                           "-A-Za-z0-9,./?%&#:_=+@~;",
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+ 
+   /* install all properties */
