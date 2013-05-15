@@ -65,6 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 
 ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
 
+rm $RPM_BUILD_ROOT%{_datadir}/gnome-control-center/default-apps/xfce4-terminal-default-apps.xml
+
 %{__rm} -r $RPM_BUILD_ROOT%{_mandir}/ug
 
 %find_lang %{name}
