@@ -1,9 +1,9 @@
-%define		xfce_version	4.10.0
+%define		xfce_version	4.12.0
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
 Version:	0.6.3
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.6/%{name}-%{version}.tar.bz2
@@ -26,7 +26,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	vte0-devel >= 0.28.0
-BuildRequires:	xfce4-dev-tools >= 4.6.0
+BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Obsoletes:	Terminal < 0.6.0
