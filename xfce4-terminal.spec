@@ -2,16 +2,15 @@
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	0.6.3
-Release:	3
+Version:	0.8.7
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a2816d8b0933cd707ed456ceb731399
+Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	3547c6d71a61740c6542e5ea4443f952
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-user-colors.patch
-Patch2:		wordseps.patch
-URL:		http://www.xfce.org/projects/terminal/
+Patch1:		wordseps.patch
+URL:		https://docs.xfce.org/apps/terminal/start
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
@@ -25,7 +24,7 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	vte0-devel >= 0.28.0
+BuildRequires:	vte-devel
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
@@ -42,7 +41,6 @@ Zaawansowany emulator terminala dla systemu X Window.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 # already present as ur
 %{__sed} -i 's,ur_PK ,,' configure.ac
@@ -67,8 +65,6 @@ ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
 
 rm $RPM_BUILD_ROOT%{_datadir}/gnome-control-center/default-apps/xfce4-terminal-default-apps.xml
 
-%{__rm} -r $RPM_BUILD_ROOT%{_mandir}/ug
-
 %find_lang %{name}
 
 %clean
@@ -83,25 +79,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/%{name}.desktop
 
 %{_mandir}/man1/%{name}*
-%lang(ar) %{_mandir}/ar/man1/%{name}*
-%lang(ca) %{_mandir}/ca/man1/%{name}*
-%lang(da) %{_mandir}/da/man1/%{name}*
-%lang(de) %{_mandir}/de/man1/%{name}*
-%lang(el) %{_mandir}/el/man1/%{name}*
-%lang(es) %{_mandir}/es/man1/%{name}*
-%lang(fr) %{_mandir}/fr/man1/%{name}*
-%lang(gl) %{_mandir}/gl/man1/%{name}*
-%lang(id) %{_mandir}/id/man1/%{name}*
-%lang(it) %{_mandir}/it/man1/%{name}*
-%lang(ja) %{_mandir}/ja/man1/%{name}*
-%lang(ko) %{_mandir}/ko/man1/%{name}*
-%lang(lt) %{_mandir}/lt/man1/%{name}*
-%lang(pl) %{_mandir}/pl/man1/%{name}*
-%lang(pt) %{_mandir}/pt/man1/%{name}*
-%lang(pt_BR) %{_mandir}/pt_BR/man1/%{name}*
-%lang(ru) %{_mandir}/ru/man1/%{name}*
-%lang(sr) %{_mandir}/sr/man1/%{name}.1*
-%lang(sv) %{_mandir}/sv/man1/%{name}*
-%lang(tr) %{_mandir}/tr/man1/%{name}*
-%lang(uk) %{_mandir}/uk/man1/%{name}*
-%lang(zh_CN) %{_mandir}/zh_CN/man1/%{name}*
