@@ -2,12 +2,12 @@
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	0.8.9.2
+Version:	0.8.10
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0308313def5d7cc51070a6db1cf24dc
+# Source0-md5:	6e18bad7109c33486cd26ef59a319f0d
 Patch0:		%{name}-desktop.patch
 Patch1:		wordseps.patch
 URL:		https://docs.xfce.org/apps/terminal/start
@@ -15,11 +15,13 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	gettext-tools
-BuildRequires:	gtk+2-devel >= 2:2.14.0
+#BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	libxfce4ui-devel >= %{xfce_version}
 BuildRequires:	ncurses-devel
+BuildRequires:	pcre2-common-devel
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -65,7 +67,7 @@ ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
 
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome-control-center/default-apps/xfce4-terminal-default-apps.xml
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,ie}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
 
 %find_lang %{name}
@@ -75,11 +77,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog HACKING NEWS README THANKS
+%doc AUTHORS ChangeLog HACKING NEWS THANKS
 %attr(755,root,root) %{_bindir}/xfce4-terminal
 %attr(755,root,root) %{_bindir}/Terminal
 %{_datadir}/xfce4/terminal
 %{_desktopdir}/%{name}.desktop
 %{_desktopdir}/%{name}-settings.desktop
-
+%{_iconsdir}/hicolor/*/apps/org.xfce.terminal*
 %{_mandir}/man1/%{name}*
