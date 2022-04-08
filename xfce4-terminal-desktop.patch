@@ -1,11 +1,11 @@
---- Terminal-0.4.5/xfce4-terminal.desktop.in.orig	2010-05-21 22:09:57.000000000 +0200
-+++ Terminal-0.4.5/xfce4-terminal.desktop.in	2010-10-11 22:22:22.000000000 +0200
+--- xfce4-terminal-1.0.0/xfce4-terminal.desktop.in~	2021-12-10 11:18:40.000000000 +0000
++++ xfce4-terminal-1.0.0/xfce4-terminal.desktop.in	2022-04-08 12:01:51.117079274 +0000
 @@ -7,7 +7,7 @@
- Icon=utilities-terminal
+ Icon=org.xfce.terminal
  Terminal=false
  Type=Application
 -Categories=GTK;System;TerminalEmulator;
 +Categories=X-XFCE;GTK;Utility;TerminalEmulator;
  StartupNotify=true
+ Actions=preferences;
  
- # vi:set encoding=UTF-8:

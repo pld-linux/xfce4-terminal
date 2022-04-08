@@ -1,13 +1,13 @@
-%define		xfce_version	4.14.0
+%define		xfce_version	4.16.0
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	0.8.10
+Version:	1.0.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://archive.xfce.org/src/apps/xfce4-terminal/0.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	6e18bad7109c33486cd26ef59a319f0d
+Source0:	https://archive.xfce.org/src/apps/xfce4-terminal/1.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	b67b00f0e99a27b7019430e0c36fc9ac
 Patch0:		%{name}-desktop.patch
 Patch1:		wordseps.patch
 URL:		https://docs.xfce.org/apps/terminal/start
@@ -26,7 +26,7 @@ BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	vte-devel
+BuildRequires:	vte-devel >= 0.51.3
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
@@ -67,7 +67,7 @@ ln -s xfce4-terminal $RPM_BUILD_ROOT%{_bindir}/Terminal
 
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/gnome-control-center/default-apps/xfce4-terminal-default-apps.xml
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,ie}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,ie,ur_PK}
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
 
 %find_lang %{name}
