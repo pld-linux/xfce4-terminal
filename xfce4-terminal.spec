@@ -2,12 +2,12 @@
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	1.0.0
+Version:	1.0.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/apps/xfce4-terminal/1.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	b67b00f0e99a27b7019430e0c36fc9ac
+# Source0-md5:	c029860ef634f0531c18be30e44b02f4
 Patch0:		%{name}-desktop.patch
 Patch1:		wordseps.patch
 URL:		https://docs.xfce.org/apps/terminal/start
