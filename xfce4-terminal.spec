@@ -1,13 +1,13 @@
-%define		xfce_version	4.16.0
+%define		xfce_version	4.18.0
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	1.1.0
+Version:	1.1.1
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	ee9177be31c6e4ccc6a6f293158358e4
+# Source0-md5:	7267ef5f32429aa3b75777e50017ce56
 Patch0:		%{name}-desktop.patch
 Patch1:		wordseps.patch
 URL:		https://docs.xfce.org/apps/terminal/start
@@ -15,7 +15,6 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	gettext-tools
-#BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk+3-devel >= 3.22
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
@@ -45,16 +44,7 @@ Zaawansowany emulator terminala dla systemu X Window.
 %patch0 -p1
 %patch1 -p1
 
-# already present as ur
-%{__sed} -i 's,ur_PK ,,' configure.ac
-
 %build
-%{__intltoolize}
-%{__libtoolize}
-%{__aclocal}
-%{__autoheader}
-%{__automake}
-%{__autoconf}
 %configure \
 	--disable-silent-rules
 %{__make}
