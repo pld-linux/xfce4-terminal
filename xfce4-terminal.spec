@@ -2,12 +2,12 @@
 Summary:	Xfce Terminal Emulator
 Summary(pl.UTF-8):	Emulator terminala dla Xfce
 Name:		xfce4-terminal
-Version:	1.1.3
+Version:	1.1.4
 Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	https://archive.xfce.org/src/apps/xfce4-terminal/1.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	8c986841d70c7480e8bd928466b8cdc2
+# Source0-md5:	ee4c672fc96c81fc8d540f66411ddc6e
 Patch0:		%{name}-desktop.patch
 Patch1:		wordseps.patch
 URL:		https://docs.xfce.org/apps/terminal/start
@@ -15,19 +15,24 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	dbus-glib-devel >= 0.62
 BuildRequires:	gettext-tools
+BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gtk+3-devel >= 3.22
+BuildRequires:	gtk-doc
+BuildRequires:	gtk-layer-shell-devel >= 0.7.0
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool
 BuildRequires:	libxfce4ui-devel >= %{xfce_version}
 BuildRequires:	ncurses-devel
-BuildRequires:	pcre2-common-devel >= 10.00
 BuildRequires:	pcre2-8-devel >= 10.00
+BuildRequires:	pcre2-common-devel >= 10.00
 BuildRequires:	perl-XML-Parser
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	vte-devel >= 0.51.3
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
+BuildRequires:	xfconf-devel >= 4.16.0
+BuildRequires:	xorg-lib-libX11-devel >= 1.6.7
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Obsoletes:	Terminal < 0.6.0
@@ -41,8 +46,8 @@ Zaawansowany emulator terminala dla systemu X Window.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %configure \
