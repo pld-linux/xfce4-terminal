@@ -5,14 +5,14 @@ similar patches:
 - mate-terminal: http://git.pld-linux.org/?p=packages/mate-terminal.git;a=blob;f=wordseps.patch
 - lxterminal: http://git.pld-linux.org/?p=packages/lxterminal.git;a=blob;f=wordseps.patch
 
---- xfce4-terminal-1.0.0/terminal/terminal-preferences.c~	2021-12-10 11:18:40.000000000 +0000
-+++ xfce4-terminal-1.0.0/terminal/terminal-preferences.c	2022-04-08 12:05:40.670277324 +0000
-@@ -1217,7 +1217,7 @@
-       g_param_spec_string ("word-chars",
-                            NULL,
-                            "WordChars",
--                           "-A-Za-z0-9,./?%&#:_=+@~",
-+                           "-A-Za-z0-9,./?%&#:_=+@~;",
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+--- xfce4-terminal-1.1.5/terminal/terminal-preferences.c~	2025-03-26 18:40:26.000000000 +0000
++++ xfce4-terminal-1.1.5/terminal/terminal-preferences.c	2025-03-28 23:39:46.421128200 +0000
+@@ -1242,7 +1242,7 @@
+     g_param_spec_string ("word-chars",
+                          NULL,
+                          "WordChars",
+-                         "-A-Za-z0-9,./?%&#:_=+@~",
++                         "-A-Za-z0-9,./?%&#:_=+@~;",
+                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
  
    /**
